@@ -10,11 +10,12 @@ def main(args):
     builder.download_and_prepare()
 
     dataset = builder.as_dataset()
-    dataset.push_to_hub(f"HichTala/{args.dataset}")
+    dataset.push_to_hub(f"{args.hf_repo}/{args.dataset}")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Upload Dataset to Hub')
+    parser.add_argument('hf_repo', type=str)
     parser.add_argument('dataset', type=str)
 
     main(parser.parse_args())
