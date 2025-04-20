@@ -27,21 +27,72 @@ better support cross-domain object detection.
 
 To use your own COCO-format dataset:
 
-- Describe your dataset:
-    Fill out the file configs/dataset/template.py with information specific to your dataset (e.g., path, split keys, label mapping, etc.).
+- **Describe your dataset**\
+  Fill out the file configs/dataset/template.py with information specific to your dataset (e.g., path, split keys, label
+  mapping, etc.).
 
-- Convert your dataset (and optionally push to the Hub)
-You don't run the script coco_format.py directly. Instead, use the COCO class defined inside it to convert your dataset to Hugging Face format.
+- **Convert your dataset (and optionally push to the Hub)**\
+  You don't run the script coco_format.py directly. Instead, use the COCO class defined inside it to convert your
+  dataset to Hugging Face format.
 
 To simplify the process, you can just run:
 
-```python
-python upload_to_hub.py dataset_name
+```bash
+python upload_to_hub.py --hf_repo your_hf_repo --dataset dataset_name
 ```
 
-- Upload to the Hub (optional):
-If you want to use your dataset across machines or experiments, you can push it to the Hugging Face Hub:
+- **Using the dataset**\
+  After pushing, your dataset is available to any script via datasets.load_dataset(...), or you can save and load it
+  locally using Hugging Face’s dataset API.
 
-python upload_to_hub.py --config configs/dataset/template.py
+## 🏁 Training
+### 🔹**Single Training**
 
-Once uploaded, you can load it using Hugging Face's standard dataset APIs, or directly reference it in training configs.
+Use run_object_detection.py with arguments or a config file:
+
+```bash
+python run_object_detection.py ...
+```
+
+### 🔸**Multiple Trainings**
+
+Use launch_experiments.py with a YAML file defining your sweep:
+
+```bash
+python launch_experiments.py --config-file configs/models/template.json ...
+```
+
+## 🌿 Branches
+
+- `main`: Focused on cross-domain few-shot object detection.
+
+- `classic-det`: Classic object detection use cases. (come soon)
+
+\
+📝 Note: Both branches use similar launch commands, but configuration files may differ slightly.
+
+## 🔧 Requirements
+
+Install dependencies and local packages:
+```bash
+pip install -r requirements.txt
+```
+
+## 📄 Citation
+
+If you use this code, please consider citing our preprint:
+```
+@misc{talaoubrid2025analyzingimpactlowrankadaptation,
+  title={Analyzing the Impact of Low-Rank Adaptation for Cross-Domain Few-Shot Object Detection in Aerial Images}, 
+  author={Hicham Talaoubrid and Anissa Mokraoui and Ismail Ben Ayed and Axel Prouvost and Sonimith Hang and Monit Korn and Rémi Harvey},
+  year={2025},
+  eprint={2504.06330},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2504.06330}, 
+}
+```
+
+## 📨 Contact
+
+For questions, feel free to open an issue or contact: [hich.tala.phd@gmail.com](mailto:hich.tala.phd@gmail.com)
