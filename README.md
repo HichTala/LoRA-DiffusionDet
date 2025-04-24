@@ -42,7 +42,7 @@ python upload_to_hub.py --hf_repo your_hf_repo --dataset dataset_name
 ```
 
 - **Using the dataset**\
-  After pushing, your dataset is available to any script via datasets.load_dataset(...), or you can save and load it
+  After pushing, your dataset is available to any script via `datasets.load_dataset(...)`, or you can save and load it
   locally using Hugging Face’s dataset API.
 
 ## 🏁 Training
@@ -66,7 +66,7 @@ python launch_experiments.py --config-file configs/models/template.json ...
 
 - `main`: Focused on cross-domain few-shot object detection.
 
-- `classic-det`: Classic object detection use cases. (come soon)
+- `classic-det`: Classic object detection use cases. (coming soon)
 
 \
 📝 Note: Both branches use similar launch commands, but configuration files may differ slightly.
